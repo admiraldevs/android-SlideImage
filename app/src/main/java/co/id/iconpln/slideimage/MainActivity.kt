@@ -22,8 +22,8 @@ class MainActivity : AppCompatActivity() {
 
     var currentPage: Int = 0
     lateinit var timer: Timer
-    val DELAY_MS: Long = 5000
-    val PERIOD_MS: Long = 5000
+    val DELAY_MS: Long = 3000
+    val PERIOD_MS: Long = 3000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         mPager.adapter = adapter
         dotsLayout = findViewById(R.id.dotsLayout) as LinearLayout
         createDots(0)
+        updatePage()
         mPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
             override fun onPageScrollStateChanged(state: Int) {
 
