@@ -29,11 +29,23 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        setupActionBar()
+        setupImageSlider()
+        setupDots()
+    }
+
+    private fun setupActionBar(){
         toolbar = findViewById(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
+    }
+
+    private fun setupImageSlider(){
         mPager = findViewById(R.id.pager) as ViewPager
         adapter = PageView(this, path)
         mPager.adapter = adapter
+    }
+
+    private fun setupDots(){
         dotsLayout = findViewById(R.id.dotsLayout) as LinearLayout
         createDots(0)
         updatePage()
@@ -53,7 +65,7 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    fun updatePage(){
+    private fun updatePage(){
         var handler = Handler()
         val Update: Runnable = Runnable {
             if(currentPage == path.size){
@@ -69,7 +81,7 @@ class MainActivity : AppCompatActivity() {
         }, DELAY_MS, PERIOD_MS)
     }
 
-    fun createDots(position: Int){
+    private fun createDots(position: Int){
         if (dotsLayout!=null){
             dotsLayout.removeAllViews()
         }
